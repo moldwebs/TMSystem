@@ -1,0 +1,17 @@
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <a href="{{ path('backend') }}" class="sidebar-brand">
+            {{ wlogo|raw }}
+        </a>
+        <div class="sidebar-toggler not-active">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="sidebar-body">
+        {{ knp_menu_render('backendSidebarMenu', {'currentClass': 'active', 'ancestorClass': 'active', 'template': 'backend/assets/backend_sidebar_knp_menu.html.twig'}) }}
+    </div>
+
+</nav>

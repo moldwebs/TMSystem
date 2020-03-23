@@ -1,0 +1,30 @@
+framework:
+    messenger:
+
+        serializer:
+            default_serializer: messenger.transport.symfony_serializer
+            symfony_serializer:
+                format: json
+                context: { }
+
+        transports:
+            async_priority_high:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%/execute'
+                options:
+                    queue_name: execute
+                retry_strategy:
+                    max_retries: 3
+                    delay: 1000
+                    multiplier: 2
+                    max_delay: 0
+            async_priority_low:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%/notifications'
+                serializer: messenger.transport.symfony_serializer
+                options:
+                    queue_name: notifications
+
+            failed: 'doctrine://default?queue_name=failed'
+
+        routing:
+            'App\Message\Notification':  async_priority_low
+            'App\Message\Execute':  async_priority_high

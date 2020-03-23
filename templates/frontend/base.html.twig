@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ wtitle }}{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('backend_app') }}
+    {% endblock %}
+</head>
+<body>
+
+{% block flash_messages %}
+    {% include "backend/assets/_flash.html.twig" %}
+{% endblock %}
+
+{% block main %}
+    <div class="main-wrapper" id="app">
+        <div class="page-wrapper">
+            <div class="page-content">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('backend_app') }}
+{% endblock %}
+</body>
+</html>

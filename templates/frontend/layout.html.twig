@@ -1,0 +1,5 @@
+{% if app.request.isXmlHttpRequest() %}
+    {% block body %}{% endblock %}
+{% else %}
+    {% extends 'frontend/base.html.twig' %}
+{% endif %}

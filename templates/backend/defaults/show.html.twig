@@ -1,0 +1,16 @@
+{% for row in data.children %}
+    {% if row.children is not empty %}
+        {% include 'backend/defaults/show.html.twig' with {'data': row, 'children': true} %}
+    {% elseif (row.vars.label is not empty and row.vars.value is not empty) %}
+    <div class="list-group-item">
+        <div class="row">
+            <div class="col-4">
+                <b>{{ row.vars.label|trans }}</b>
+            </div>
+            <div class="col-8">
+                {{ row.vars.value }}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endfor %}
