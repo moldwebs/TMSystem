@@ -6,8 +6,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha256-bQmrZe4yPnQrLTY+1gYylfNMBuGfnT/HKsCGX+9Xuqo=" crossorigin="anonymous"></script>
-
         {% block stylesheets %}
             {{ encore_entry_link_tags('backend_app') }}
         {% endblock %}
@@ -35,38 +33,45 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('backend_app') }}
+
+            {% if app.environment.MESSENGER_TRANSPORT_DSN is defined %}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha256-bQmrZe4yPnQrLTY+1gYylfNMBuGfnT/HKsCGX+9Xuqo=" crossorigin="anonymous"></script>
+
+            <script>
+                (function () {
+
+                    var socket = null;
+
+                    var onMessage = function (data) {
+                        try {
+                            data = JSON.parse(data);
+                            data = JSON.parse(data.content);
+                        } catch (e) {
+                            data = {"action":"dialog", "message":data};
+                        }
+
+                        if (data.action == 'dialog') {
+                            //alert(data.message);
+                            $.notify(data.message);
+                        }
+
+                        console.log(data);
+                        socket.emit('logs', data);
+                    };
+
+                    var connectToServer = function () {
+                        socket = io.connect('http://localhost:3001');
+                        socket.on('notification', onMessage);
+                    };
+
+                    connectToServer();
+
+                })();
+            </script>
+
+            {% endif %}
+
         {% endblock %}
-
-        <script>
-            (function () {
-
-                var socket = null;
-
-                var onMessage = function (data) {
-                    try {
-                        data = JSON.parse(data);
-                        data = JSON.parse(data.content);
-                    } catch (e) {
-                        data = {"action":"dialog", "message":data};
-                    }
-
-                    if (data.action == 'dialog') {
-                        alert(data.message);
-                    }
-
-                    console.log(data);
-                    socket.emit('logs', data);
-                };
-
-                var connectToServer = function () {
-                    socket = io.connect('http://localhost:3000');
-                    socket.on('notification', onMessage);
-                };
-
-                connectToServer();
-
-            })();
-        </script>
 
     </body>
 </html>

@@ -13,7 +13,8 @@ io.on('connection', function(socket){
     io.emit('message', 'connected ok');
 
     socket.on('logs', function(msg){
-        console.log('logs: ' + msg);
+        console.log('logs: ');
+        console.log(msg);
     });
 });
 
@@ -23,6 +24,7 @@ http.listen(3000, function(){
 
 amqp.connect(process.env.AMQP_URL, function(error0, connection) {
     if (error0) {
+        console.log(process.env.AMQP_URL);
         console.log(error0);
         throw error0;
     }
@@ -33,6 +35,7 @@ amqp.connect(process.env.AMQP_URL, function(error0, connection) {
 
         channel.consume('notifications', function(msg) {
             io.emit('notification', msg.content.toString());
+            console.log(msg.properties.headers.type);
         }, {
             noAck: true
         });

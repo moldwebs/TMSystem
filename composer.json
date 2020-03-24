@@ -8,6 +8,8 @@
         "ckfinder/ckfinder-symfony-bundle": "^3.5",
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "friendsofsymfony/ckeditor-bundle": "^2.2",
+        "friendsofsymfony/oauth-server-bundle": "^1.6",
+        "friendsofsymfony/rest-bundle": "^2.7",
         "friendsofsymfony/user-bundle": "^2.1",
         "gedmo/doctrine-extensions": "^2.4",
         "knplabs/knp-menu-bundle": "^3.0",

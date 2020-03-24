@@ -1,5 +1,7 @@
 window.$ = window.jQuery = require('jquery');
 window.eModal = require('./eModal');
+//window.notify = require('./notify');
+window.notify = require('bootstrap-notify');
 
 import '../theme/sass/app.scss';
 require('bootstrap');
@@ -23,7 +25,8 @@ require('../theme/plugins/datatables-net-bs4/dataTables.bootstrap4.js');
 import '../theme/plugins/@mdi/css/materialdesignicons.min.css';
 import '../theme/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css';
 
-require('../theme/plugins/chartjs/Chart.min.js');
+//require('../theme/plugins/chartjs/Chart.min.js');
+require('chart.js');
 require('../theme/plugins/jquery.flot/jquery.flot.js');
 require('../theme/plugins/jquery.flot/jquery.flot.resize.js');
 require('../theme/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js');

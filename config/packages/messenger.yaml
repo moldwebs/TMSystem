@@ -5,7 +5,7 @@ framework:
             default_serializer: messenger.transport.symfony_serializer
             symfony_serializer:
                 format: json
-                context: { }
+                context: {}
 
         transports:
             async_priority_high:

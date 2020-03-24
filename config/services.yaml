@@ -53,3 +53,6 @@ services:
     App\Form\EntityCollectionType:
         arguments: ['@doctrine.orm.entity_manager']
         tags: [form.type]
+
+    FOS\OAuthServerBundle\Model\AccessTokenManagerInterface:
+        alias: fos_oauth_server.access_token_manager.default
