@@ -35,6 +35,7 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFilter('action', [$this, 'showAction']),
+            new TwigFilter('dateortext', [$this, 'dateortextAction']),
         ];
     }
 
@@ -56,6 +57,15 @@ class AppExtension extends AbstractExtension
     public function showAction(string $data): string
     {
         return ($this->requestStack->getCurrentRequest()->get('id') ? 'act.edit' : 'act.create') . ' ' .  $data;
+    }
+
+    public function dateortextAction($data): string
+    {
+        if ($data instanceof \DateTime) {
+            return $data->format("d/m/Y");
+        } else {
+            return $data;
+        }
     }
 
 }

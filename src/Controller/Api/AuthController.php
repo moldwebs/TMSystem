@@ -19,6 +19,8 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Swagger\Annotations as SWG;
+
 class AuthController extends FOSRestController
 {
 
@@ -32,8 +34,26 @@ class AuthController extends FOSRestController
     /**
      * Create Client.
      * @FOSRest\Post("/auth/createClient")
-     *
-     * @return Response
+     *     @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          required=true,
+     *          @SWG\Schema(
+     *              @SWG\Property(
+     *                  property="redirect-uri",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="grant-type",
+     *                  type="string",
+     *                  default="password"
+     *              )
+     *          )
+     *     )
+     * @SWG\Response(
+     *     response=200,
+     *     description="Returns the token",
+     * )
      */
     public function AuthenticationAction(Request $request)
     {
