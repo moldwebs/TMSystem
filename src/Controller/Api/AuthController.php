@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class ApiAuthController extends FOSRestController
+class AuthController extends FOSRestController
 {
 
     private $client_manager;
