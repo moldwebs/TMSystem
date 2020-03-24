@@ -51,6 +51,7 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/manager/, role: ROLE_MANAGER }
 
+        - { path: ^/api/doc, roles: [ IS_AUTHENTICATED_ANONYMOUSLY ] }
         - { path: ^/api/auth/createClient, roles: [ IS_AUTHENTICATED_ANONYMOUSLY ] }
         - { path: ^/api/auth/register, roles: [ IS_AUTHENTICATED_ANONYMOUSLY ] }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }

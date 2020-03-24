@@ -14,11 +14,6 @@ fos_oauth_server_token:
 fos_oauth_server_authorize:
   resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
 
-sg_datatables_bundle:
-  resource: "@SgDatatablesBundle/Controller/"
-  type:     annotation
-  prefix:   /sg
-
 ckfinder_connector:
   resource: "@CKSourceCKFinderBundle/Resources/config/routing.yml"
   prefix:   /
