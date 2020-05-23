@@ -6,3 +6,4 @@ twig:
     globals:
         wtitle: '%env(wtitle)%'
         wlogo: '%env(wlogo)%'
+        socket_url: '%env(SOCKET_URL)%'

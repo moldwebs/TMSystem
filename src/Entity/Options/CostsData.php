@@ -32,6 +32,16 @@ class CostsData
     private $cost;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Currency")
+     */
+    private $currency;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\PayType")
+     */
+    private $payType;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -79,6 +89,30 @@ class CostsData
         $this->cost = $cost;
     }
 
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
 
+    /**
+     * @param mixed $currency
+     */
+    public function setCurrency($currency): void
+    {
+        $this->currency = $currency;
+    }
+
+    public function getPayType()
+    {
+        return $this->payType;
+    }
+
+    /**
+     * @param mixed $payType
+     */
+    public function setPayType($payType): void
+    {
+        $this->payType = $payType;
+    }
 
 }

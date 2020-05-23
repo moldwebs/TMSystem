@@ -13,7 +13,7 @@ trait DefaultsTrait
     /**
      * @var CsrfTokenManager
      */
-    private $csrfTokenManager;
+    protected $csrfTokenManager;
 
     public function setCsrfTokenManager(CsrfTokenManagerInterface $csrfTokenManager)
     {

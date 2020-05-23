@@ -14,3 +14,4 @@ RUN apt-get update && apt-get install -y \
 #CMD [ "supervisorctl", "reread" ]
 #CMD [ "supervisorctl", "update" ]
 #CMD [ "supervisorctl", "start messenger-consume:*" ]
+#CMD ["php", "/var/www/html/bin/console", "messenger:consume", "-vv", "async_priority_high"]

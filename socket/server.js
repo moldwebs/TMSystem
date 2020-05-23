@@ -33,11 +33,21 @@ amqp.connect(process.env.AMQP_URL, function(error0, connection) {
             throw error1;
         }
 
-        channel.consume('notifications', function(msg) {
-            io.emit('notification', msg.content.toString());
-            console.log(msg.properties.headers.type);
-        }, {
-            noAck: true
+        channel.prefetch(10);
+        channel.assertQueue("notifications", { durable: true }, function(error2, _ok) {
+            if (error2) {
+                throw error2;
+            }
+            channel.consume('notifications', function(msg) {
+                io.emit('notification', msg.content.toString());
+                console.log(msg.properties.headers.type);
+            }, {
+                noAck: true
+            });
+
+            console.log("Worker is started");
         });
+
+
     });
 });

@@ -4,9 +4,9 @@
 namespace App\Controller\Backend\Options;
 
 
-use App\Entity\Options\Transport;
-use App\Form\Options\TransportType;
-use App\Datatables\Options\TransportDatatable;
+use App\Entity\PayType;
+use App\Form\PayTypeType;
+use App\Datatables\PayTypesDatatable;
 
 use App\Controller\Backend\AbstractController;
 
@@ -14,34 +14,34 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/transport", name="transport")
+ * @Route("/pay-types", name="pay-types")
  * @IsGranted("ROLE_MANAGER")
  */
-class TransportController extends AbstractController
+class PayTypesController extends AbstractController
 {
     public function getDatatable()
     {
-        return TransportDatatable::class;
+        return PayTypesDatatable::class;
     }
 
     public function getEntity()
     {
-        return Transport::class;
+        return PayType::class;
     }
 
     public function getEntityType()
     {
-        return TransportType::class;
+        return PayTypeType::class;
     }
 
     public function getRoutePrefix()
     {
-        return 'transport';
+        return 'pay-types';
     }
 
     public function getTitle()
     {
-        return 'Transport';
+        return 'Pay Types';
     }
 
 }

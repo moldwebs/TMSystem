@@ -4,9 +4,9 @@
 namespace App\Controller\Backend\Options;
 
 
-use App\Entity\Options\Transport;
-use App\Form\Options\TransportType;
-use App\Datatables\Options\TransportDatatable;
+use App\Entity\Options\Route as TripRoute;
+use App\Form\Options\RouteType;
+use App\Datatables\Options\RoutesDatatable;
 
 use App\Controller\Backend\AbstractController;
 
@@ -14,34 +14,34 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/transport", name="transport")
+ * @Route("/routes", name="routes")
  * @IsGranted("ROLE_MANAGER")
  */
-class TransportController extends AbstractController
+class RoutesController extends AbstractController
 {
     public function getDatatable()
     {
-        return TransportDatatable::class;
+        return RoutesDatatable::class;
     }
 
     public function getEntity()
     {
-        return Transport::class;
+        return TripRoute::class;
     }
 
     public function getEntityType()
     {
-        return TransportType::class;
+        return RouteType::class;
     }
 
     public function getRoutePrefix()
     {
-        return 'transport';
+        return 'routes';
     }
 
     public function getTitle()
     {
-        return 'Transport';
+        return 'Routes';
     }
 
 }

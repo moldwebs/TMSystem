@@ -45,7 +45,7 @@ class DriverType extends AbstractType
             ->add('termData', EntityCollectionType::class, [
                 'entry_type' => TermDataType::class,
                 'class' => Term::class,
-                'criteria' => ['type' => 'driver'],
+                'criteria' => ['type' => 'drivers'],
                 'orderBy' => ['position' => 'asc'],
                 'entry_options' => [
                     'row_attr' => [

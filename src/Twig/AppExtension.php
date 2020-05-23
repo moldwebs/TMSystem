@@ -35,7 +35,7 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFilter('action', [$this, 'showAction']),
-            new TwigFilter('dateortext', [$this, 'dateortextAction']),
+            new TwigFilter('getValue', [$this, 'getValueAction']),
         ];
     }
 
@@ -59,12 +59,18 @@ class AppExtension extends AbstractExtension
         return ($this->requestStack->getCurrentRequest()->get('id') ? 'act.edit' : 'act.create') . ' ' .  $data;
     }
 
-    public function dateortextAction($data): string
+    public function getValueAction($data): string
     {
-        if ($data instanceof \DateTime) {
-            return $data->format("d/m/Y");
+        if ($data['data'] instanceof \DateTime) {
+            return $data['data']->format("d/m/Y");
+        } else if (!empty($data['choices'])){
+            $choice = array_filter($data['choices'], function ($choice) use ($data) {
+                return $choice->value == $data['data'];
+            });
+            $choice = reset($choice);
+            return !empty($choice) ? $choice->label : $data['data'];
         } else {
-            return $data;
+            return $data['data'];
         }
     }
 

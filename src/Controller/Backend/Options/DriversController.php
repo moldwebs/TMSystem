@@ -4,9 +4,9 @@
 namespace App\Controller\Backend\Options;
 
 
-use App\Entity\Options\Transport;
-use App\Form\Options\TransportType;
-use App\Datatables\Options\TransportDatatable;
+use App\Entity\Options\Driver;
+use App\Form\Options\DriverType;
+use App\Datatables\Options\DriversDatatable;
 
 use App\Controller\Backend\AbstractController;
 
@@ -14,34 +14,34 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/transport", name="transport")
+ * @Route("/drivers", name="drivers")
  * @IsGranted("ROLE_MANAGER")
  */
-class TransportController extends AbstractController
+class DriversController extends AbstractController
 {
     public function getDatatable()
     {
-        return TransportDatatable::class;
+        return DriversDatatable::class;
     }
 
     public function getEntity()
     {
-        return Transport::class;
+        return Driver::class;
     }
 
     public function getEntityType()
     {
-        return TransportType::class;
+        return DriverType::class;
     }
 
     public function getRoutePrefix()
     {
-        return 'transport';
+        return 'drivers';
     }
 
     public function getTitle()
     {
-        return 'Transport';
+        return 'Drivers';
     }
 
 }

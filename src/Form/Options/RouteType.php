@@ -29,7 +29,7 @@ class RouteType extends AbstractType
             ->add('costsData', EntityCollectionType::class, [
                 'entry_type' => CostsDataType::class,
                 'class' => Costs::class,
-                'criteria' => ['type' => 'route'],
+                'criteria' => ['type' => 'routes'],
                 'orderBy' => ['position' => 'asc'],
                 'entry_options' => [
                     'row_attr' => [
@@ -45,7 +45,7 @@ class RouteType extends AbstractType
             ->add('termData', EntityCollectionType::class, [
                 'entry_type' => TermDataType::class,
                 'class' => Term::class,
-                'criteria' => ['type' => 'route'],
+                'criteria' => ['type' => 'routes'],
                 'orderBy' => ['position' => 'asc'],
                 'entry_options' => [
                     'row_attr' => [

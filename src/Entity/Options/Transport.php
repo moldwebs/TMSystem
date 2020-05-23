@@ -19,8 +19,11 @@ class Transport
     use BaseFieldsTrait, TitleTrait, ExtrasTrait;
 
     const TYPES = [
-        1 => 'Rutiera',
-        2 => 'Autocar'
+        1 => 'Microbuz',
+        2 => 'Autocar',
+        3 => 'Autobuz',
+        4 => 'Camion',
+        5 => 'Remorca',
     ];
 
     /**

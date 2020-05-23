@@ -8,9 +8,10 @@
                     <b>{{ row.vars.label|trans }}</b>
                 </div>
                 <div class="col-8">
-                    {{ row.vars.data|dateortext }}
+                    {{ row.vars|getValue }}
                 </div>
             </div>
         </div>
     {% endif %}
 {% endfor %}
+

@@ -4,9 +4,11 @@
 namespace App\Form\Options;
 
 
+use App\Entity\Currency;
 use App\Entity\Options\Costs;
 use App\Entity\Options\CostsData;
 
+use App\Entity\PayType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -29,6 +31,18 @@ class CostsDataType extends AbstractType
             ->add('cost', MoneyType::class, [
                 'label' => $options['row_attr']['label'],
                 'required' => false,
+            ])
+            ->add('currency', EntityType::class, [
+                'class' => Currency::class,
+                'label' => 'Currency',
+                'required' => false,
+                'placeholder' => false
+            ])
+            ->add('paytype', EntityType::class, [
+                'class' => PayType::class,
+                'label' => 'Payment Type',
+                'required' => false,
+                'placeholder' => false
             ])
         ;
     }

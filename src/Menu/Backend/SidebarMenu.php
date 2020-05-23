@@ -21,8 +21,8 @@ class SidebarMenu
     {
 
         $sysTypes = [
-            'route' => 'Rute',
-            'driver' => 'Soferi',
+            'routes' => 'Rute',
+            'drivers' => 'Soferi',
             'transport' => 'Transport',
         ];
 
@@ -36,6 +36,18 @@ class SidebarMenu
             ->setExtra('icon', 'box')
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
+
+        $menu->addChild('Trips', ['route' => 'trips.index'])
+            ->setExtra('routes', [
+                ['pattern' => "/^trips\..+/"]
+            ])
+            ->setExtra('icon', 'book')
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
+
+        $menu->addChild('Optiuni')
+            ->setAttribute('class', 'nav-item nav-category');
+
 
         $menu_items = $menu->addChild('Items')
             ->setExtra('icon', 'list')
@@ -60,14 +72,14 @@ class SidebarMenu
 
         foreach ($sysTypes as $key => $label) {
             $menu_terms->addChild($label, [
-                'route' => 'term.index',
+                'route' => 'terms.index',
                 'routeParameters' => [
                     'type' => $key
                 ]
             ])
                 ->setExtra('routes', [
                     [
-                        'pattern' => '/^term\..+/',
+                        'pattern' => '/^terms\..+/',
                         'parameters' => [
                             'type' => $key
                         ]
@@ -84,7 +96,7 @@ class SidebarMenu
             ->setLinkAttribute('class', 'nav-link');
 
         $costsTypes = [
-            'route' => 'Rute',
+            'routes' => 'Rute',
         ];
 
         foreach ($costsTypes as $key => $label) {
@@ -106,6 +118,21 @@ class SidebarMenu
                 ->setLinkAttribute('class', 'nav-link');
         }
 
+        $menu_costs->addChild('Currency', ['route' => 'currency.index'])
+            ->setExtra('routes', [
+                ['pattern' => "/^currency\..+/"]
+            ])
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
+
+        $menu_costs->addChild('Pay Types', ['route' => 'pay-types.index'])
+            ->setExtra('routes', [
+                ['pattern' => "/^pay-types\..+/"]
+            ])
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
+
+
         $menu->addChild('Cms')
             ->setAttribute('class', 'nav-item nav-category');
 
@@ -118,6 +145,11 @@ class SidebarMenu
             ->setAttribute('class', 'nav-item nav-category');
 
         $menu->addChild('Documentatie', ['route' => 'documentation'])
+            ->setExtra('icon', 'hash')
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
+
+        $menu->addChild('Run Queue', ['route' => 'makesome'])
             ->setExtra('icon', 'hash')
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');

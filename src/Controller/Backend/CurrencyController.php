@@ -4,42 +4,42 @@
 namespace App\Controller\Backend;
 
 
-use App\Entity\Page;
-use App\Form\PageType;
-use App\Datatables\PagesDatatable;
+use App\Entity\Currency;
+use App\Form\CurrencyType;
+use App\Datatables\CurrencyDatatable;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/pages", name="pages")
+ * @Route("/currency", name="currency")
  * @IsGranted("ROLE_MANAGER")
  */
-class PagesController extends AbstractController
+class CurrencyController extends AbstractController
 {
     public function getDatatable()
     {
-        return PagesDatatable::class;
+        return CurrencyDatatable::class;
     }
 
     public function getEntity()
     {
-        return Page::class;
+        return Currency::class;
     }
 
     public function getEntityType()
     {
-        return PageType::class;
+        return CurrencyType::class;
     }
 
     public function getRoutePrefix()
     {
-        return 'pages';
+        return 'currency';
     }
 
     public function getTitle()
     {
-        return 'Pages';
+        return 'Currency';
     }
 
 }
