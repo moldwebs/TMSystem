@@ -8,3 +8,55 @@
         {{ 'act.back'|trans }}
     </a>
 {% endblock %}
+
+{% block body_form %}
+    {{ form_start(form) }}
+
+    <div class="row">
+        <div class="col-md-4">
+            {{ form_row(form.number) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_row(form.route) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            {{ form_row(form.driver) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_row(form.transport) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_row(form.withTransport) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.placeFrom) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.placeTo) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.releaseDate) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.startDate) }}
+        </div>
+    </div>
+
+    <div><hr></div>
+
+    <div>
+        {{ form_row(form.costsData) }}
+    </div>
+
+
+    {{ form_end(form) }}
+{% endblock %}

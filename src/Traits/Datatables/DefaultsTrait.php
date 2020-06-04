@@ -26,6 +26,7 @@ trait DefaultsTrait
             'classes' => 'table dataTable no-footer',
             'individual_filtering' => false,
             'individual_filtering_position' => 'head',
+            'global_search_type' => 'like',
             'order_cells_top' => true,
             'order' => [[0, 'desc']],
         ], $options);

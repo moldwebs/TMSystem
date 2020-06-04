@@ -41,7 +41,7 @@ class SidebarMenu
             ->setExtra('routes', [
                 ['pattern' => "/^trips\..+/"]
             ])
-            ->setExtra('icon', 'book')
+            ->setExtra('icon', 'navigation-2')
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 

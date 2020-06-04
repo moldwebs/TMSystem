@@ -115,4 +115,9 @@ class CostsData
         $this->payType = $payType;
     }
 
+    public function isEmpty()
+    {
+        return empty($this->getCost());
+    }
+
 }

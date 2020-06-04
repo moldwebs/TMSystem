@@ -3,7 +3,6 @@ window.eModal = require('./eModal');
 //window.notify = require('./notify');
 window.notify = require('bootstrap-notify');
 
-import '../theme/sass/app.scss';
 require('bootstrap');
 
 //import '../css/template.css';
@@ -57,3 +56,44 @@ $(document).on('click', '.js-emodal', function (e) {
 
     eModal.ajax(options);
 });
+
+
+import '../theme/plugins/select2/css/select2.css';
+import '../theme/plugins/select2/select2.min';
+
+$(document).on('change', '[js-change-load]', function () {
+    var path = $(this).parents('form:first').attr('action') ?? window.location.href;
+    var load_item = $(this).attr('js-change-load');
+
+    var data = {};
+    data[$(this).attr('name')] = $(this).val();
+
+    $.ajax({
+        url : path,
+        type: 'get',
+        data : data,
+        success: function(html) {
+            load_item.split(" ").forEach(function (item) {
+                $(item).replaceWith(
+                    $(html).find(item)
+                );
+            });
+            ajax_init();
+        }
+    });
+});
+
+
+
+function ajax_init() {
+    if ($(".select2").length) {
+        $(".select2").select2();
+    }
+}
+
+$(function() {
+    ajax_init();
+});
+
+import '../theme/sass/app.scss';
+

@@ -9,7 +9,9 @@
                         <div><h6 class="card-title">{% block body_title %}{% endblock %}</h6></div>
                         <div>{% block body_back %}{% endblock %}</div>
                     </div>
-                    {{ form(form) }}
+                    {% block body_form %}
+                        {{ form(form) }}
+                    {% endblock %}
                 </div>
             </div>
         </div>

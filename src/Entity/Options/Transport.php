@@ -58,9 +58,6 @@ class Transport
         $this->type = $type;
     }
 
-    /**
-     * @return mixed
-     */
     public function getTermData()
     {
         return $this->termData;
@@ -69,8 +66,9 @@ class Transport
     /**
      * @param mixed $termData
      */
-    public function addTermData($termData): void
+    public function setTermData($termData): void
     {
-        $this->termData[] = $termData;
+        $this->termData = $termData;
     }
+
 }

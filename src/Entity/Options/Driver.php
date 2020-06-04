@@ -29,9 +29,6 @@ class Driver
      */
     private $termData;
 
-    /**
-     * @return mixed
-     */
     public function getTermData()
     {
         return $this->termData;
@@ -40,10 +37,11 @@ class Driver
     /**
      * @param mixed $termData
      */
-    public function addTermData($termData): void
+    public function setTermData($termData): void
     {
-        $this->termData[] = $termData;
+        $this->termData = $termData;
     }
+
 
 
 }

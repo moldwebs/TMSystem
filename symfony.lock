@@ -286,6 +286,9 @@
             "./config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "setasign/fpdi": {
+        "version": "v2.3.3"
+    },
     "sg/datatablesbundle": {
         "version": "1.0",
         "recipe": {

@@ -22,7 +22,8 @@ class TermDataType extends AbstractType
                 'label' => false,
                 'row_attr' => array(
                     'class' => 'd-none'
-                )
+                ),
+                'data' => $options['row_attr']['label']
             ])
             ->add('date', DateType::class, [
                 'label' => $options['row_attr']['label'],

@@ -16,6 +16,7 @@ class ResizeFormListener implements EventSubscriberInterface
     protected $options;
 
     private $deleteEmpty;
+    private $emptyItems = [];
 
     public function setConf(string $type, array $items = [], array $options = [], $deleteEmpty = false)
     {
@@ -30,6 +31,7 @@ class ResizeFormListener implements EventSubscriberInterface
         return [
             FormEvents::PRE_SET_DATA => 'preSetData',
             FormEvents::PRE_SUBMIT => 'preSubmit',
+            FormEvents::SUBMIT => ['onSubmit', 50],
         ];
     }
 
@@ -46,6 +48,7 @@ class ResizeFormListener implements EventSubscriberInterface
             $form->remove($name);
         }
 
+        $newData = [];
         foreach ($this->items as $name => $value) {
             $options = array_merge_recursive($this->options, [
                 'label' => false,
@@ -53,7 +56,15 @@ class ResizeFormListener implements EventSubscriberInterface
                 'property_path' => '['.$name.']',
             ]);
             $form->add($name, $this->type, $options);
+
+            foreach ($data as $item) {
+                if($item->{"get" . (new \ReflectionClass($value))->getShortName()}() == $value)
+                    $newData[$name] = $item;
+            }
+
         }
+
+        $event->setData($newData);
     }
 
     public function preSubmit(FormEvent $event)
@@ -61,13 +72,29 @@ class ResizeFormListener implements EventSubscriberInterface
         $form = $event->getForm();
         $data = $event->getData();
 
-        foreach ($this->items as $name => $value) {
-            foreach ($data[$name] as $val) {
-                if (empty($val)) {
-                    $form->remove($name);
-                    unset($data[$name]);
-                    break;
-                }
+        foreach ($form as $name => $child) {
+
+            $isEmpty = method_exists($child->getData(),'isEmpty') ? $child->getData()->isEmpty() : $child->isEmpty();
+
+            if ($isEmpty) {
+                $form->remove($name);
+            }
+
+        }
+    }
+
+    public function onSubmit(FormEvent $event)
+    {
+        $form = $event->getForm();
+        $data = $event->getData();
+
+        foreach ($form as $name => $child) {
+
+            $isEmpty = method_exists($child->getData(),'isEmpty') ? $child->getData()->isEmpty() : $child->isEmpty();
+
+            if ($isEmpty) {
+                unset($data[$name]);
+                $form->remove($name);
             }
         }
 

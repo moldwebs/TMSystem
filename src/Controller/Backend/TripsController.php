@@ -74,6 +74,7 @@ class TripsController extends AppController
             $this->em->flush();
 
             $this->addFlash("success", "Item successfully saved");
+            return $this->redirect($_SERVER['HTTP_REFERER']);
             return $this->redirectToRoute('trips.index');
         }
 
