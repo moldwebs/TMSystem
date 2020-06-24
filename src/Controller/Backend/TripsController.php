@@ -7,6 +7,7 @@ use App\Entity\Trip;
 use App\Form\TripType;
 use App\Datatables\TripsDatatable;
 
+use App\Services\TripService;
 use App\Traits\Controller\EntityManagerTrait;
 use App\Traits\Controller\RequestTrait;
 
@@ -97,6 +98,15 @@ class TripsController extends AppController
 
         $this->addFlash("success", "Item successfully removed");
         return $this->redirectToRoute('trips.index');
+    }
+
+    /**
+     * @Route("/print/{id}", name=".print")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function print(Trip $trip, TripService $tripService)
+    {
+        dd($tripService->generateDoc($trip));
     }
 
 }

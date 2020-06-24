@@ -90,6 +90,26 @@ class TripsDatatable extends AbstractDatatable
                 "class_name" => "text-center",
                 'actions' => [
                     [
+                        'route' => $this->getRoutePrefix() . '.print',
+                        'route_parameters' => [
+                            'id' => 'id',
+                            'token' => 'print_token'
+                        ],
+                        'label' => $this->translator->trans('act.print'),
+                        'icon' => 'mdi mdi-lead-pencil',
+                        'attributes' => $this->getDefaultsActionAttributes($this->translator->trans('act.print'), null, ['target' => '__blank']),
+                        'render_if' => function () {
+                            return $this->authorizationChecker->isGranted('ROLE_ADMIN');
+                        },
+                    ]
+                ]
+            ])
+
+            ->add(null, ActionColumn::class, [
+                'width' => "50px",
+                "class_name" => "text-center",
+                'actions' => [
+                    [
                         'route' => $this->getRoutePrefix() . '.edit',
                         'route_parameters' => [
                             'id' => 'id',

@@ -16,6 +16,7 @@
         "nelmio/api-doc-bundle": "^3.6",
         "ramsey/uuid-doctrine": "^1.6",
         "sensio/framework-extra-bundle": "^5.1",
+        "setasign/fpdf": "^1.8",
         "setasign/fpdi": "^2.3",
         "sg/datatablesbundle": "^1.1",
         "stof/doctrine-extensions-bundle": "^1.3",

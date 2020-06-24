@@ -32,14 +32,14 @@ trait DefaultsTrait
         ], $options);
     }
 
-    protected function getDefaultsActionAttributes($label, $class = null)
+    protected function getDefaultsActionAttributes($label, $class = null, $attributes = [])
     {
-        return [
+        return array_merge([
             'rel' => 'tooltip',
             'title' => $label,
             'class' => 'btn btn-secondary btn-xs ' . $class,
             'role' => 'button'
-        ];
+        ], $attributes);
     }
 
 }
