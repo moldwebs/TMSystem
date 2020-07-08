@@ -16,8 +16,9 @@ trait ExtrasTrait
     /**
      * @return mixed
      */
-    public function getExtras()
+    public function getExtras($field = null)
     {
+        if ($field) return $this->extras[$field] ?? null;
         return $this->extras ?? [];
     }
 

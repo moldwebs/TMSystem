@@ -29,8 +29,8 @@ class SidebarMenu
         $menu = $this->factory->createItem('root')
             ->setChildrenAttributes(['class' => 'nav']);
 
-        $menu->addChild('Menu')
-            ->setAttribute('class', 'nav-item nav-category');
+//        $menu->addChild('Menu')
+//            ->setAttribute('class', 'nav-item nav-category');
 
         $menu->addChild('Dashboard', ['route' => 'dashboard'])
             ->setExtra('icon', 'box')
@@ -45,9 +45,8 @@ class SidebarMenu
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 
-        $menu->addChild('Optiuni')
-            ->setAttribute('class', 'nav-item nav-category');
-
+//        $menu->addChild('Optiuni')
+//            ->setAttribute('class', 'nav-item nav-category');
 
         $menu_items = $menu->addChild('Items')
             ->setExtra('icon', 'list')
@@ -77,16 +76,16 @@ class SidebarMenu
                     'type' => $key
                 ]
             ])
-                ->setExtra('routes', [
-                    [
-                        'pattern' => '/^terms\..+/',
-                        'parameters' => [
-                            'type' => $key
-                        ]
+            ->setExtra('routes', [
+                [
+                    'pattern' => '/^terms\..+/',
+                    'parameters' => [
+                        'type' => $key
                     ]
-                ])
-                ->setAttribute('class', 'nav-item')
-                ->setLinkAttribute('class', 'nav-link');
+                ]
+            ])
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
         }
 
         $menu_costs = $menu->addChild('Costs')
@@ -106,16 +105,16 @@ class SidebarMenu
                     'type' => $key
                 ]
             ])
-                ->setExtra('routes', [
-                    [
-                        'pattern' => '/^costs\..+/',
-                        'parameters' => [
-                            'type' => $key
-                        ]
+            ->setExtra('routes', [
+                [
+                    'pattern' => '/^costs\..+/',
+                    'parameters' => [
+                        'type' => $key
                     ]
-                ])
-                ->setAttribute('class', 'nav-item')
-                ->setLinkAttribute('class', 'nav-link');
+                ]
+            ])
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
         }
 
         $menu_costs->addChild('Currency', ['route' => 'currency.index'])
@@ -132,6 +131,28 @@ class SidebarMenu
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 
+        $menu_settings = $menu->addChild('Settings')
+            ->setExtra('icon', 'sliders')
+            ->setExtra('idx', uniqid())
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
+
+        $menu_settings->addChild('Ordin', [
+            'route' => 'settings.index',
+            'routeParameters' => [
+                'type' => 'ordin_pdf'
+            ]
+        ])
+        ->setExtra('routes', [
+            [
+                'pattern' => '/^settings\..+/',
+                'parameters' => [
+                    'type' => 'ordin_pdf'
+                ]
+            ]
+        ])
+        ->setAttribute('class', 'nav-item')
+        ->setLinkAttribute('class', 'nav-link');
 
         $menu->addChild('Cms')
             ->setAttribute('class', 'nav-item nav-category');

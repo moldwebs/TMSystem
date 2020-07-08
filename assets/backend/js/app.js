@@ -4,6 +4,9 @@ window.eModal = require('./eModal');
 window.notify = require('bootstrap-notify');
 
 require('bootstrap');
+import '../plugins/bootstrap4-editable/css/bootstrap-editable.css';
+const EditableForm = require('../plugins/bootstrap4-editable/js/bootstrap-editable.min');
+global.EditableForm = EditableForm;
 
 //import '../css/template.css';
 import '../css/app.css';

@@ -106,7 +106,7 @@ class TripsController extends AppController
      */
     public function print(Trip $trip, TripService $tripService)
     {
-        dd($tripService->generateDoc($trip));
+        $tripService->generateDoc($trip);
     }
 
 }

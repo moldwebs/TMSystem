@@ -3,6 +3,8 @@
 
 namespace App\Entity;
 
+use App\Entity\Options\Driver;
+use App\Entity\Options\Transport;
 use App\Traits\Entity\BaseFieldsTrait;
 use App\Traits\Entity\TitleTrait;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -35,11 +37,13 @@ class Trip
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Options\Driver")
+     * @var Driver
      */
     private $driver;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Options\Transport")
+     * @var Transport
      */
     private $transport;
 
