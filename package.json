@@ -21,7 +21,7 @@
         "@mdi/font": "^4.6.95",
         "ace-builds": "^1.4.7",
         "animate.css": "^3.7.2",
-        "apexcharts": "^3.10.1",
+        "apexcharts": "^3.24.0",
         "bootstrap-colorpicker": "^3.1.2",
         "bootstrap-datepicker": "^1.9.0",
         "bootstrap-maxlength": "^1.6.0",
